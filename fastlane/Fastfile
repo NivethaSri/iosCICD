@@ -6,7 +6,7 @@ platform :ios do
   lane :ci do
     run_tests(
       scheme: "TestCICD",
-      destination: "generic/platform=iOS Simulator",
+      device: "iPhone 17",
       only_testing: ["TestCICDTests"],
       clean: true
     )
