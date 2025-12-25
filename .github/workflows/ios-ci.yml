@@ -1,24 +1,16 @@
-name: iOS CI
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+- name: Run tests with Fastlane
+  run: |
+    fastlane ci
 
 jobs:
   build-and-test:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Run tests
-        run: |
-          xcodebuild \
-            -scheme TestCICD \
-            -destination 'platform=iOS Simulator,name=iPhone 17 Pro' \         
-            -only-testing:TestCICDTests \
-            clean test
+      - name: Install Fastlane
+        run: brew install fastlane
 
+      - name: Run tests with Fastlane
+        run: fastlane ci
