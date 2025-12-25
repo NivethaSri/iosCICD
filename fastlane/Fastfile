@@ -6,7 +6,7 @@ platform :ios do
   lane :ci do
     run_tests(
       scheme: "TestCICD",
-      devices: ["iPhone 17"],
+      devices: ["iPhone 16 Pro (18.4)"],
       only_testing: ["TestCICDTests"],
       clean: true
     )
